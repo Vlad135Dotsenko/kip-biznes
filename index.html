@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Перевірка контрагентів, супровід угод і консультації щодо фінансування та купівлі бізнесу в Україні."
+    />
+    <meta name="theme-color" content="#f5f7fa" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:title" content="КІП-БІЗНЕС — перевірка та розвиток бізнесу" />
+    <meta
+      property="og:description"
+      content="Перевірка контрагентів, супровід угод і консультації щодо фінансування та купівлі бізнесу в Україні."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="КІП-БІЗНЕС — перевірка та розвиток бізнесу" />
+    <meta
+      name="twitter:description"
+      content="Перевірка контрагентів, супровід угод і консультації щодо фінансування та купівлі бізнесу в Україні."
+    />
+    <title>КІП-БІЗНЕС — перевірка та розвиток бізнесу</title>
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js" defer></script>
+    <script src="i18n.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#" aria-label="КІП-БІЗНЕС — на головну">
+          <img src="logo.svg" alt="КІП-БІЗНЕС" />
+        </a>
+        <div class="top-actions">
+          <button class="icon-button" aria-label="Пошук" id="focus-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+          </button>
+          <select class="language-button" id="language-toggle" aria-label="Site language / Мова сайту">
+            <option value="uk">Українська</option>
+            <option value="en">English</option>
+          </select>
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="Увімкнути темну тему"
+            aria-pressed="false"
+          >
+            <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+            </svg>
+            <span class="theme-toggle-label">Темна</span>
+          </button>
+          <a class="contact-button" href="#contact-info">Контакти <span aria-hidden="true">↗</span></a>
+          <button class="account-button" id="auth-open" type="button">Увійти</button>
+          <button class="signout-button" id="signout-button" type="button" hidden>Вийти</button>
+        </div>
+      </div>
+      <section class="masthead" aria-label="КІП-БІЗНЕС">
+        <div class="masthead-inner">
+          <div class="masthead-brand">
+            <img src="logo.svg" alt="" aria-hidden="true" />
+            <h2>КІП-БІЗНЕС</h2>
+          </div>
+          <div class="masthead-actions">
+            <a class="contact-jump" href="#application-dialog" data-service-application=""><span aria-hidden="true">＋</span>Заявка</a>
+            <a class="contact-jump" href="mailto:vladdocenko2013@gmail.com"><span aria-hidden="true">✉</span>E-mail</a>
+            <a href="#application-dialog" data-service-application=""><span aria-hidden="true">↗</span>Написати повідомлення</a>
+            <a href="#application-dialog" data-service-application=""><span aria-hidden="true">＋</span>Залишити заявку</a>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <div class="app-notice" id="app-notice" role="status" aria-live="polite" hidden></div>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Платформа для розвитку бізнесу в Україні</p>
+          <h1 id="page-title">Бізнес в Україні: аналітика та розвиток</h1>
+          <p class="intro-copy">Аналітика, супровід угод і перевірені можливості для розвитку бізнесу.</p>
+        </div>
+        <div class="moderator-note">
+          <div class="avatar"><img src="logo.svg" alt="" aria-hidden="true" /></div>
+          <div><strong>КІП-БІЗНЕС</strong></div>
+          <span class="verified" title="Підтверджений акаунт" aria-label="Підтверджений акаунт">✓</span>
+        </div>
+      </section>
+
+      <section class="service-mosaic" aria-label="Послуги КІП-БІЗНЕС">
+        <a class="service-tile service-tile-primary" href="#about">
+          <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5M8 11l2 2 4-4"></path></svg></span>
+          <span class="tile-index">01 / АНАЛІТИКА</span>
+          <strong>Аналіз контрагентів</strong>
+          <span>Перевірка ризиків в Україні та за її межами <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="service-tile service-tile-contracts" href="#contracts">
+          <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v6h5M10 13h6m-6 4h6"></path></svg></span>
+          <span class="tile-index">02</span>
+          <strong>Аналіз зовнішньоекономічних контрактів</strong>
+          <span>Реєстри, судові справи та міжнародні джерела</span>
+        </a>
+        <a class="service-tile service-tile-consulting" href="#analytics">
+          <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10m5 10V4m6 16v-7m5 7V7"></path><path d="m3 7 6-3 6 6 5-4"></path></svg></span>
+          <span class="tile-index">03</span>
+          <strong>Фінансування та розвиток</strong>
+          <span>Консультації щодо кредитування та купівлі бізнесу</span>
+        </a>
+        <a class="service-tile service-tile-business" href="#listings">
+          <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9h18v11H3zM2 9l2-5h16l2 5M8 20v-6h8v6"></path><path d="M7 9v2m5-2v2m5-2v2"></path></svg></span>
+          <span class="tile-index">04</span>
+          <strong>Купівля та продаж бізнесу</strong>
+          <span>Переглянути актуальні пропозиції <span aria-hidden="true">↗</span></span>
+        </a>
+      </section>
+
+      <section class="company-section" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <span class="section-kicker">Захищаємо ваші рішення</span>
+          <h2 id="about-title">Аналіз контрагентів з України</h2>
+        </div>
+        <div class="company-copy">
+          <article class="company-point company-lead">
+            <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 21 19H3L12 3Z"></path><path d="M12 9v4m0 3h.01"></path></svg></span>
+            <h3>Чому важлива перевірка</h3>
+            <p>Один неперевірений партнер, необґрунтований платіж або пропущена вимога регулятора можуть коштувати бізнесу часу, коштів і репутації. Перевірка допомагає помітити ризики до того, як вони переростуть у проблему.</p>
+          </article>
+          <article class="company-point">
+            <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"></path><path d="m8.5 12 2.2 2.2 4.8-4.8"></path></svg></span>
+            <h3>Ризики до угоди</h3>
+            <p>Допомагаємо перевірити партнера й побачити можливі проблеми до підписання документів.</p>
+          </article>
+          <article class="company-point">
+            <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V5m0 15h17M8 16l4-5 3 2 5-7"></path><path d="M16 6h4v4"></path></svg></span>
+            <h3>Перевірка за джерелами</h3>
+            <p>Перевіряємо державні й міжнародні реєстри, санкційні ризики та фінансовий стан, а також доступну інформацію про тендери, судові справи, стягнення й кримінальні провадження.</p>
+          </article>
+          <article class="company-point company-emphasis">
+            <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-4 12.7V19h8v-3.3A7 7 0 0 0 12 3Z"></path><path d="M9 22h6m-5-7 2 2 4-4"></path></svg></span>
+            <h3>Обґрунтовані рішення</h3>
+            <p>Ви ведете бізнес — ми надаємо інформацію, потрібну для впевнених рішень.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="expertise-section" aria-labelledby="expertise-title">
+        <div class="expertise-mark"><img src="logo.svg" alt="Логотип КІП-БІЗНЕС" /></div>
+        <div>
+          <span class="section-kicker">Досвід, на який можна покластися</span>
+          <h2 id="expertise-title">Хто здійснює перевірку</h2>
+          <p><strong>Понад 20 років досвіду</strong> у банківській системі, фінансовому моніторингу, комплаєнсі та аналізі ризиків.</p>
+        </div>
+      </section>
+
+      <section class="international-section" id="contracts" aria-labelledby="international-title">
+        <div class="section-heading">
+          <span class="section-kicker">Робота з міжнародними ринками</span>
+          <h2 id="international-title">Аналіз зовнішньоекономічних контрактів</h2>
+        </div>
+        <div class="international-grid">
+          <div class="international-card">
+            <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"></path><path d="M14 3v6h5M9 14h7m-7 3h7"></path></svg></span>
+            <span class="tile-index">ДЖЕРЕЛА ДАНИХ</span>
+            <p>Державні та судові реєстри, санкційні списки, фінансова звітність і доступні міжнародні джерела.</p>
+          </div>
+          <div class="international-card international-card-offset">
+            <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg></span>
+            <span class="tile-index">ГЕОГРАФІЯ</span>
+            <p>Перевірка контрагентів з країн Європи, Азії, Північної та Південної Америки.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="community-section" id="analytics" aria-labelledby="community-title">
+        <span class="section-kicker">Можливості для вашого бізнесу</span>
+        <h2 id="community-title">Долучайтеся до бізнес-спільноти КІП-БІЗНЕС</h2>
+        <div class="community-links">
+          <button type="button" data-service-application="Продаж бізнесу"><span class="community-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9h18v11H3zM2 9l2-5h16l2 5M8 20v-6h8v6"></path></svg></span>Продаж бізнесу <span aria-hidden="true">↗</span></button>
+          <button type="button" data-service-application="Венчурні інвестиції"><span class="community-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M17 7c0-2-2-3-5-3S7 5 7 7s2 3 5 3 5 1 5 3-2 4-5 4-5-2-5-4"></path></svg></span>Венчурні інвестиції <span aria-hidden="true">↗</span></button>
+          <button type="button" data-service-application="Кредитування бізнесу"><span class="community-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10h18M5 10v9m5-9v9m4-9v9m5-9v9M3 21h18M12 3 2 8h20z"></path></svg></span>Кредитування бізнесу <span aria-hidden="true">↗</span></button>
+          <button type="button" data-service-application="Терміновий викуп бізнесу"><span class="community-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h15l-2-2m3 12H5l2 2"></path><path d="M19 7a8 8 0 0 1 1 9M5 17a8 8 0 0 1-1-9"></path></svg></span>Терміновий викуп бізнесу <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+
+      <section class="news-section" id="news" aria-labelledby="news-title">
+        <div class="news-heading">
+          <div>
+            <span class="section-kicker">Новини та аналітика</span>
+            <h2 id="news-title">Корисне для важливих рішень</h2>
+          </div>
+          <span class="news-heading-note">Практичні теми для власників і керівників бізнесу</span>
+        </div>
+        <div class="news-grid">
+          <a class="news-card" href="#about">
+            <span class="news-category"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>Перевірка контрагентів</span>
+            <h3>Що перевірити перед підписанням угоди з новим партнером</h3>
+            <span class="news-read">Репутація · Фінансовий стан · Судові ризики</span>
+            <span class="news-link">До послуги <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="news-card news-card-featured" href="#contracts">
+            <span class="news-category"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>Міжнародна торгівля</span>
+            <h3>Зовнішньоекономічний контракт: які ризики оцінити заздалегідь</h3>
+            <span class="news-read">Сторони контракту · Санкції · Джерела даних</span>
+            <span class="news-link">Дізнатися більше <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="news-card" href="#listings">
+            <span class="news-category"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18v11H3zM2 9l2-5h16l2 5"></path><path d="M8 20v-6h8v6"></path></svg>Купівля бізнесу</span>
+            <h3>Що перевірити перед купівлею готового бізнесу</h3>
+            <span class="news-read">Активи · Можливості · Перевірка інформації</span>
+            <span class="news-link">До пропозицій <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+      </section>
+
+      <div class="category-row">
+        <nav class="category-nav" aria-label="Категорії оголошень">
+          <button class="category-link selected" data-category="all">Усі пропозиції</button>
+          <button class="category-link" data-category="business">Продаж бізнесу</button>
+          <button class="category-link" data-category="real-estate">Нерухомість</button>
+          <button class="category-link" data-category="land">Земля</button>
+        </nav>
+        <button class="post-button" id="post-listing" type="button" hidden>
+          <span aria-hidden="true">＋</span> Розмістити оголошення
+        </button>
+      </div>
+
+      <div class="content-layout" id="listings">
+        <section class="results" aria-label="Список пропозицій">
+          <div class="results-toolbar">
+            <div class="results-count">Актуальні пропозиції <span id="result-count">00</span></div>
+            <div class="sort-tabs" role="group" aria-label="Сортування">
+              <button class="sort-tab selected" data-sort="new">Нові</button>
+              <button class="sort-tab" data-sort="price">За ціною</button>
+            </div>
+          </div>
+
+          <div class="listing-grid" id="listing-grid"></div>
+
+          <div class="empty-state" id="empty-state" hidden>
+            <span class="empty-icon">⌕</span>
+            <strong>За цими параметрами нічого не знайшли</strong>
+            <p>Змініть фільтри або перегляньте всі пропозиції.</p>
+            <button id="reset-filters">Скинути фільтри</button>
+          </div>
+          <p class="moderator-disclaimer"><span>i</span> Усі оголошення на цій сторінці розміщені акаунтом модератора.</p>
+        </section>
+
+        <aside class="sidebar" aria-label="Пошук та фільтри">
+          <div class="sidebar-banner">
+            <span class="banner-icon" aria-hidden="true">↗</span>
+            <div><strong>Шукаєте бізнес?</strong><span>Перегляньте актуальні пропозиції</span></div>
+          </div>
+          <form class="filter-panel" id="filter-form">
+            <div class="filter-heading"><div><span class="filter-kicker">Знайдіть своє</span><h2>Пошук пропозицій</h2></div><span class="filter-symbol" aria-hidden="true">⌕</span></div>
+            <label class="filter-field">
+              <span>Ключове слово</span>
+              <input id="search-input" type="search" placeholder="Наприклад, готель" />
+            </label>
+            <label class="filter-field">
+              <span>Тип об'єкта</span>
+              <select id="type-filter">
+                <option value="all">Усі типи</option>
+                <option value="business">Продаж бізнесу</option>
+                <option value="real-estate">Нерухомість</option>
+                <option value="land">Земля</option>
+              </select>
+            </label>
+            <label class="filter-field">
+              <span>Регіон</span>
+              <select id="region-filter">
+                <option value="all">Уся Україна</option>
+                <option value="київська">Київська область</option>
+                <option value="львівська">Львівська область</option>
+              </select>
+            </label>
+            <div class="price-filter">
+              <label class="filter-field">
+                <span>Ціна від, $</span>
+                <input id="min-price" type="number" min="0" placeholder="0" />
+              </label>
+              <label class="filter-field">
+                <span>Ціна до, $</span>
+                <input id="max-price" type="number" min="0" placeholder="Без обмежень" />
+              </label>
+            </div>
+            <button class="search-button" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg> Показати пропозиції</button>
+            <button class="clear-button" id="clear-filters" type="button">Очистити фільтри</button>
+          </form>
+          <div class="help-card">
+            <span class="help-icon" aria-hidden="true">?</span>
+            <div><strong>Потрібна консультація?</strong><a href="#application-dialog" data-service-application="">Залиште заявку <span aria-hidden="true">→</span></a></div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <dialog class="details-dialog application-dialog" id="application-dialog">
+      <button class="dialog-close" data-close-dialog="application-dialog" aria-label="Закрити">×</button>
+      <span class="dialog-kicker">Заявка на консультацію</span>
+      <h2 id="application-title">Подати заявку</h2>
+      <p class="dialog-intro">Заявка буде надіслана команді КІП-БІЗНЕС. Для її подання потрібно увійти або створити акаунт.</p>
+      <form id="application-form">
+        <label class="filter-field">
+          <span>Напрям заявки</span>
+          <select name="service" required>
+            <option value="" selected disabled>Оберіть напрям заявки</option>
+            <option value="Продаж бізнесу">Продаж бізнесу</option>
+            <option value="Венчурні інвестиції">Венчурні інвестиції</option>
+            <option value="Кредитування бізнесу">Кредитування бізнесу</option>
+            <option value="Терміновий викуп бізнесу">Терміновий викуп бізнесу</option>
+          </select>
+        </label>
+        <label class="filter-field">
+          <span>Ваше ім'я</span>
+          <input name="name" type="text" maxlength="100" autocomplete="name" required />
+        </label>
+        <label class="filter-field">
+          <span>Телефон для зв'язку</span>
+          <input name="phone" type="tel" maxlength="40" autocomplete="tel" required />
+        </label>
+        <label class="filter-field">
+          <span>Коментар до заявки</span>
+          <textarea name="message" rows="4" maxlength="2000" placeholder="Коротко опишіть ваш запит"></textarea>
+        </label>
+        <p class="form-message" id="application-message" aria-live="polite"></p>
+        <button class="search-button" type="submit">Надіслати заявку</button>
+      </form>
+    </dialog>
+
+    <dialog class="details-dialog" id="details-dialog">
+      <button class="dialog-close" id="dialog-close" aria-label="Закрити">×</button>
+      <span class="dialog-kicker">Пропозиція від модератора</span>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-copy"></p>
+      <a class="dialog-contact" href="#application-dialog" data-service-application="">Запитати подробиці <span aria-hidden="true">↗</span></a>
+    </dialog>
+
+    <dialog class="details-dialog auth-dialog" id="auth-dialog">
+      <button class="dialog-close" data-close-dialog="auth-dialog" aria-label="Закрити">×</button>
+      <span class="dialog-kicker">Акаунт КІП-БІЗНЕС</span>
+      <h2 id="auth-title">Увійти в акаунт</h2>
+      <p class="dialog-intro">Увійдіть у наявний акаунт або створіть новий. Роль модератора призначає адміністратор окремо.</p>
+      <div class="auth-tabs" role="group" aria-label="Дія з акаунтом">
+        <button class="auth-tab selected" data-auth-mode="login" type="button">Увійти</button>
+        <button class="auth-tab" data-auth-mode="signup" type="button">Створити акаунт</button>
+      </div>
+      <form id="auth-form">
+        <label class="filter-field" id="auth-name-field" hidden>
+          <span>Як до вас звертатися</span>
+          <input name="display_name" type="text" maxlength="80" autocomplete="name" />
+        </label>
+        <label class="filter-field" id="auth-email-field">
+          <span>Електронна пошта</span>
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <label class="filter-field password-field" id="auth-password-field">
+          <span>Пароль</span>
+          <span class="password-input-wrap">
+            <input name="password" type="password" autocomplete="current-password" minlength="8" required />
+            <button class="password-toggle" id="password-toggle" type="button" aria-label="Показати пароль" aria-pressed="false">Показати</button>
+          </span>
+        </label>
+        <label class="filter-field" id="auth-confirm-field" hidden>
+          <span>Повторіть новий пароль</span>
+          <input name="password_confirmation" type="password" autocomplete="new-password" minlength="8" />
+        </label>
+        <p class="auth-hint" id="auth-hint">Якщо акаунт уже створений, оберіть «Увійти» або скористайтеся відновленням пароля.</p>
+        <p class="form-message" id="auth-message" aria-live="polite"></p>
+        <button class="search-button" id="auth-submit" type="submit">Увійти</button>
+      </form>
+      <button class="resend-button" id="resend-confirmation" type="button" hidden>Надіслати лист підтвердження ще раз</button>
+      <button class="forgot-password-button" id="forgot-password" type="button">Забули пароль?</button>
+      <button class="guest-button" id="continue-guest" type="button">Продовжити як гість</button>
+    </dialog>
+
+    <dialog class="details-dialog listing-dialog" id="listing-dialog">
+      <button class="dialog-close" data-close-dialog="listing-dialog" aria-label="Закрити">×</button>
+      <span class="dialog-kicker">Панель модератора</span>
+      <h2>Нове оголошення</h2>
+      <form id="listing-form">
+        <label class="filter-field">
+          <span>Назва</span>
+          <input name="title" maxlength="160" required />
+        </label>
+        <label class="filter-field">
+          <span>Опис</span>
+          <textarea name="description" rows="4" maxlength="5000" required></textarea>
+        </label>
+        <label class="filter-field">
+          <span>Категорія</span>
+          <select name="category" required>
+            <option value="business">Продаж бізнесу</option>
+            <option value="real_estate">Нерухомість</option>
+            <option value="land">Земля</option>
+          </select>
+        </label>
+        <label class="filter-field">
+          <span>Регіон</span>
+          <input name="region" maxlength="120" placeholder="Наприклад, Київська область" required />
+        </label>
+        <label class="filter-field">
+          <span>Ціна, $ (необов'язково)</span>
+          <input name="price_usd" type="number" min="0" step="0.01" />
+        </label>
+        <label class="filter-field image-url-field">
+          <span>Посилання на фото (необов'язково)</span>
+          <input name="image_url" type="url" placeholder="https://" />
+        </label>
+        <label class="checkbox-field">
+          <input name="price_negotiable" type="checkbox" />
+          <span>Ціна договірна</span>
+        </label>
+        <p class="form-message" id="listing-message" aria-live="polite"></p>
+        <button class="search-button" type="submit">Опублікувати оголошення</button>
+      </form>
+    </dialog>
+
+    <footer class="footer" id="contact-info">
+      <div class="footer-info">
+        <img class="footer-logo" src="logo.svg" alt="Логотип КІП-БІЗНЕС" />
+        <span class="footer-kicker">Завжди на зв'язку</span>
+        <strong>Контакти та інша інформація</strong>
+        <a href="mailto:vladdocenko2013@gmail.com">vladdocenko2013@gmail.com</a>
+        <span>Зв'яжіться з нами через форму заявки або електронну пошту.</span>
+        <span>© 2026 КІП-БІЗНЕС <i aria-hidden="true"></i> Перевірка та розвиток бізнесу в Україні</span>
+      </div>
+    </footer>
+  </body>
+</html>
